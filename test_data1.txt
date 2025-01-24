@@ -1,0 +1,18 @@
+{
+    "income": {
+        "January": [
+            {"amount": 3000, "source": "Salary"},
+            {"amount": 1000, "source": "Rental Income"},
+            {"amount": 999, "source": "Investment Return"}
+            
+        ]
+    },
+    "expense": {
+        "January": [
+            {"amount": 900, "cause": "Rent"},
+            {"amount": 200, "cause": "Groceries"},
+            {"amount": 50, "cause": "Dinner"}
+        ]
+    },
+    "month": "January"
+}
