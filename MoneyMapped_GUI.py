@@ -91,6 +91,28 @@ class gui_MoneyMapped: #Graphical User Interface
         exit_button=tk.Button(root, text="Quit",bg='red', command=quit, width=16)
         exit_button.grid(row=7, column= 3, padx=10, pady=10)
 
+#Area to display output
+        self.output_display=tk.Text(root, height=15, width=100)
+        self.output_display.grid(row=11, columnspan=4, padx=10, pady=10)
+
+#Box which consist of informations on how to use the application   
+        self.instruction = tk.Text(root, height=8, width=100, wrap=tk.WORD, background="#FBEAEB")
+        self.instruction.insert(tk.END, "How to use the Application\n")
+        self.instruction.tag_configure("bold", font=("Arial", 15, "bold"))
+        self.instruction.tag_add("bold", "1.0", "1.end")
+        self.instruction.insert(tk.END, "1. Choose a month from dropdown menu.\n")
+        self.instruction.insert(tk.END, "2. Input income/expense(in numbers) and description(source/casue of income/expense) using the respective buttons.\n")
+        self.instruction.insert(tk.END, "3. Click 'Add Amount to Income' button to add the amount to incomes of the selected month. \n")
+        self.instruction.insert(tk.END, "4. Click 'Add Amount to Expense' button to add the amount to expenses of the selected month. \n")
+        self.instruction.insert(tk.END, "5. Choose from the buttons 'View Balance', 'Income History', 'Expense History', 'Cash Flow' to perform the respective calculations. \n")
+        self.instruction.insert(tk.END, "6. In order to load data from external file, click 'Load data from file' and choose the 'txt' file that contains the data.\n")
+        self.instruction.insert(tk.END, "7. After loading the data, choose the desired option. For eg, clicking 'View Balance' button will show balance amount after calculating from data's in the 'txt' files\n")
+        self.instruction.grid(row=12, columnspan=6, padx=10, pady=10)
+        self.instruction.config(state=tk.DISABLED)
+
+        
+   
+
     
 class MoneyMapped:
     def __init__(self):
