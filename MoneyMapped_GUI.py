@@ -52,7 +52,44 @@ class gui_MoneyMapped: #Graphical User Interface
         self.explanation_input.bind("<FocusIn>", lambda event: self.clear_desc(event, self.explanation_input))
         self.explanation_input.bind("<FocusOut>", lambda event: self.renter_desc(event, self.explanation_input))
 
+#Button to add amount to income
+        self.add_income_initiate=ttk.Button(root, text="Add Amount to Income", command=self.add_income, style='AddIncome.TButton')
+        self.add_income_initiate.grid(row=4, column=1, padx=10, pady=10)
+        self.style = ttk.Style()
+        self.style.configure('AddIncome.TButton', background='blue')
 
+#Button to add amount to expense
+        self.add_expense_initiate=ttk.Button(root, text="Add Amount to Expense", command=self.add_expense, style='AddExpense.TButton')
+        self.add_expense_initiate.grid(row=4, column=2, padx=10, pady=10)
+        self.style = ttk.Style()
+        self.style.configure('AddExpense.TButton', background='Red')
+
+#Button to view balance
+        self.view_balance_initiate=ttk.Button(root, text="Click to View Balance", command=self.view_balance)
+        self.view_balance_initiate.grid(row=5, column=0, padx=10, pady=10)
+
+#Button to view income history
+        self.view_IncomeHistory_initiate=ttk.Button(root, text="Click for Income History", command=self.income_history)
+        self.view_IncomeHistory_initiate.grid(row=5, column=1, padx=10, pady=10)
+
+#Button to view expense history
+        self.view_ExpenseHistory_initiate=ttk.Button(root, text="Click for Expense History & Expense Analysis", command=self.expense_history)
+        self.view_ExpenseHistory_initiate.grid(row=5, column=2, padx=10, pady=10)
+
+#Button to view cash flow
+        self.view_CashFlow_initiate=ttk.Button(root, text="Click to View Cash Flow", command=self.cash_flow)
+        self.view_CashFlow_initiate.grid(row=5, column=3, padx=10, pady=10)
+
+        self.load_data_label = tk.Label(root, text="Click the button to load txt file named 'test_data1' or 'test_data2' in the zip file to test the functionality -->", bg="lightgreen")
+        self.load_data_label.grid(row=6, column=1, padx=10, pady=10, columnspan=2, sticky="w")
+
+#Button to load data from file
+        self.load_gui_initiate=tk.Button(root, text="Load Data from file",bg='lightblue', command=self.load_data)
+        self.load_gui_initiate.grid(row=6, column=3, padx=10, pady=10)
+
+#Button to quit the program        
+        exit_button=tk.Button(root, text="Quit",bg='red', command=quit, width=16)
+        exit_button.grid(row=7, column= 3, padx=10, pady=10)
 
     
 class MoneyMapped:
