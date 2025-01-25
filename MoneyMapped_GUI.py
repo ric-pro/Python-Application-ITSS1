@@ -111,7 +111,82 @@ class gui_MoneyMapped: #Graphical User Interface
         self.instruction.config(state=tk.DISABLED)
 
         
-   
+    def clear_desc(self, event, entry_widget):
+        if entry_widget.get() == "Enter amount here" or entry_widget.get() == "Enter description here":
+            entry_widget.delete(0, tk.END)
+
+    def renter_desc(self, event, entry_widget):
+        if not entry_widget.get():
+            if entry_widget == self.amount_input:
+                entry_widget.insert(0, "Enter amount here")
+            elif entry_widget == self.explanation_input:
+                entry_widget.insert(0, "Enter description here")
+
+                
+    def set_month(self, event=None):
+        self.clear()
+        month=self.month_gui_variable.get()
+        self.tracker.set_month(month)
+        self.set_month_lavel.config(text=f"Select Month: {month}")
+        self.output_display.insert(tk.END, f"Month: {month}.\n")
+
+    def add_income(self):
+        self.clear()
+        amount=float(self.amount_input.get())
+        source=self.explanation_input.get()
+        message=self.tracker.add_income(amount,source)
+        self.output_display.insert(tk.END, f"{message}\n")
+        self.reset()
+
+    def add_expense(self):
+        self.clear()
+        amount=float(self.amount_input.get())
+        cause=self.explanation_input.get()
+        message=self.tracker.add_expense(amount, cause)
+        self.output_display.insert(tk.END, f"{message}\n")
+        self.reset()
+
+    def view_balance(self):
+        self.clear()
+        message=self.tracker.view_balance()
+        self.output_display.insert(tk.END, f"{message}\n")
+
+    def income_history(self):
+        self.clear()
+        message=self.tracker.view_income()
+        self.output_display.insert(tk.END, f"{message}\n")
+
+    def expense_history(self):
+        self.clear()
+        message=self.tracker.view_expense()
+        self.output_display.insert(tk.END, f"{message}\n")
+    
+    def cash_flow(self):
+        self.clear()
+        message=self.tracker.view_cash_flow()
+        self.output_display.insert(tk.END, f"{message}\n")
+
+    def reset(self):
+        self.amount_input.delete(0,tk.END)
+        self.explanation_input.delete(0,tk.END)
+
+    def clear(self):
+        self.output_display.delete(1.0, tk.END)
+    
+    def load_data(self):
+        self.clear()
+        name=filedialog.askopenfilename(filetypes=[("Text files", "*txt"), ("All files", "*.*")])
+        if name:
+            if self.tracker.load_data(name):
+                self.output_display.insert(tk.END, "Data loaded from file. \n")
+                selected_month = self.tracker.month
+                self.set_month_lavel.config(text=f"Selected Month: {selected_month}")
+            else:
+                self.output_display.insert(tk.END, "Loading Data from file failed. \n")
+
+    def quit():
+        root.destroy()
+        return None
 
     
 class MoneyMapped:
