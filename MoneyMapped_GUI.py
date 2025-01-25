@@ -11,6 +11,28 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog
 
+class gui_MoneyMapped: #Graphical User Interface 
+    def __init__(self,root):
+        self.root=root
+        self.root.title("MoneyMapped")
+        self.tracker=MoneyMapped()
+
+#Defining a heading
+        self.header_name = ttk.Label(root, text="MoneyMapped", font=("Arial", 40, "bold"), foreground="#2F3C7E", background="#FBEAEB")
+        self.header_name.grid(row=0, columnspan=4, padx=10, pady=10)
+
+#Selecting month from drop down menu
+        self.month_gui=ttk.Label(root, text="Select Month:")
+        self.month_gui.grid(row=1, column=0,padx=10,pady=10)
+        self.month_gui_list=["January", "Febraury", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+        self.month_gui_variable=tk.StringVar()
+        self.month_gui_dropdown=ttk.Combobox(root, textvariable=self.month_gui_variable, values=self.month_gui_list)
+        self.month_gui_dropdown.grid(row=1, column=1, padx=10, pady=10)
+        self.month_gui_dropdown.bind("<<ComboboxSelected>>", self.set_month)
+
+ #displaying selected month       
+        self.set_month_lavel=ttk.Label(root, text="Selected Month: None")
+        self.set_month_lavel.grid(row=1, column=2, padx=10, pady=10)
 
     
 class MoneyMapped:
