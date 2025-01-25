@@ -34,6 +34,26 @@ class gui_MoneyMapped: #Graphical User Interface
         self.set_month_lavel=ttk.Label(root, text="Selected Month: None")
         self.set_month_lavel.grid(row=1, column=2, padx=10, pady=10)
 
+#Area to input amount 
+        self.amount_gui=ttk.Label(root, text="Amount:")
+        self.amount_gui.grid(row=2, column=0, padx=10, pady=10)
+        self.amount_input=ttk.Entry(root)
+        self.amount_input.insert(0, "Enter amount here")
+        self.amount_input.grid(row=2, column=1, padx=10, pady=10)
+        self.amount_input.bind("<FocusIn>", lambda event: self.clear_desc(event, self.amount_input))
+        self.amount_input.bind("<FocusOut>", lambda event: self.renter_desc(event, self.amount_input))
+
+#Area to input description
+        self.explanation_gui=ttk.Label(root, text="Description:")
+        self.explanation_gui.grid(row=3, column=0, padx=10, pady=10)
+        self.explanation_input=ttk.Entry(root)  
+        self.explanation_input.insert(0, "Enter description here")
+        self.explanation_input.grid(row=3, column=1, padx=10, pady=10)
+        self.explanation_input.bind("<FocusIn>", lambda event: self.clear_desc(event, self.explanation_input))
+        self.explanation_input.bind("<FocusOut>", lambda event: self.renter_desc(event, self.explanation_input))
+
+
+
     
 class MoneyMapped:
     def __init__(self):
