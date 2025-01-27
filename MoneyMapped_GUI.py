@@ -182,7 +182,7 @@ class gui_MoneyMapped: #Graphical User Interface
                 selected_month = self.tracker.month
                 self.set_month_lavel.config(text=f"Selected Month: {selected_month}")
             else:
-                self.output_display.insert(tk.END, "Loading Data from file failed. \n")
+                self.output_display.insert(tk.END, "Loading Data from file failed duo to error. \n")
 
     def quit():
         root.destroy()
